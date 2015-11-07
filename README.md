@@ -24,19 +24,36 @@ source $repo/env/bin/activate
 ##step4##
 ####Install Python requirements####
   ```bash
-pip install -r requirements.txt
+pip install -r $repo/requirements.txt
   ```
   
 ##step5##
-####Create a superuser####
+####Sync sqlite database####
   ```bash
-./manage.py createsuperuser
-  ```  
+python ${repo}tutorial/manage.py migrate
+  ```    
   
 ##step6##
-####Start Django develop application server####
-This runs the site on port 9000
+####Create a superuser####
   ```bash
-./manage.py runserver 0.0.0.0:9000
+python ${repo}tutorial/manage.py createsuperuser
   ```  
   
+##step7##
+####Start Django develop application server####
+This serves the Django project on port 9000
+  ```bash
+python ${repo}tutorial/manage.py runserver 0.0.0.0:9000
+  ```  
+  
+##step8##
+####Login to Django Rest Framework as a superuser####
+Navigate to this url in the browser <br/>
+http://127.0.0.1:9000/api-auth/login/
+
+##step9##
+####View API's####
+Navigate to urls in the browser <br/>
+http://127.0.0.1:9000/<br/>
+http://127.0.0.1:9000/users/</br>
+http://127.0.0.1:9000/groups/
